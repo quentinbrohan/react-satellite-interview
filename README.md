@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# React Satellite app for IT interview
+
+A satellite application in which it can display technical information from Celestrak for Earth-orbiting satellites.
+
+Integrated Typescript and used Redux for the global state management.
+
+UI: Ant Design.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
