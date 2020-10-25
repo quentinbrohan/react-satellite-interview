@@ -1,23 +1,24 @@
 import React from 'react';
-import './App.css';
-import { Button } from 'antd';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
+import './App.less';
+
+import AppLayout from './components/AppLayout';
+import SatelliteInfo from './components/SatelliteInfo/SatelliteInfo';
+import SearchBar from './components/SearchBar/SearchBar';
+
+function App(): JSX.Element {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<Button type="link">
-					<a
-						className="App-link"
-						href="https://reactjs.org"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Learn React
-					</a>
-				</Button>
-			</header>
-		</div>
+		<Router>
+			<div className="App">
+				<AppLayout>
+					<Switch>
+						<Route exact path="/" component={SearchBar} />
+						<Route exact path="/CATNR/:id" component={SatelliteInfo} />
+					</Switch>
+				</AppLayout>
+			</div>
+		</Router>
 	);
 }
 
