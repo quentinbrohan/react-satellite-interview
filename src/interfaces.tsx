@@ -3,10 +3,10 @@ export interface IAppLayout {
 }
 
 export interface ISatelliteInfo {
-	satellite: ITableData;
+	satellite: ISatelliteData;
 }
 
-export interface ITableData {
+export interface ISatelliteData {
 	OBJECT_NAME: string;
 	OBJECT_ID: string;
 	EPOCH: string;
@@ -24,4 +24,28 @@ export interface ITableData {
 	BSTAR: number;
 	MEAN_MOTION_DOT: number;
 	MEAN_MOTION_DDOT: number;
+}
+
+export interface IRouteParams {
+	id: string;
+}
+
+export interface ISatellitesInitialState {
+	satellites: [] | ISatelliteData[];
+	satellite: null;
+	loading: boolean;
+	search: undefined;
+	searchError: null;
+}
+
+export interface ISatellitesState {
+	satellites: ISatelliteData[];
+	satellite: ISatelliteData;
+	loading: boolean;
+	search: number | undefined;
+	searchError: string;
+}
+
+export interface IState {
+	satellites: ISatellitesState | ISatellitesInitialState;
 }

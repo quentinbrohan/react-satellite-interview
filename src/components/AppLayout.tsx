@@ -1,13 +1,18 @@
-import React from 'react';
-import { Layout, Menu, Button } from 'antd';
 import { RocketOutlined } from '@ant-design/icons';
-import { IAppLayout } from '../interfaces';
+import { Button, Layout, Menu } from 'antd';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { IAppLayout, ISatelliteData } from '../interfaces';
+import { RootState } from '../reducers';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 export const AppLayout: React.FC<IAppLayout> = ({ children }: IAppLayout) => {
+	const { satellites } = useSelector((state: RootState | any) => state.satellites);
+
 	return (
 		<Layout style={{ minHeight: '100vh', overflow: 'auto' }}>
 			<Header className="header">
@@ -35,10 +40,12 @@ export const AppLayout: React.FC<IAppLayout> = ({ children }: IAppLayout) => {
 						style={{ height: '100%', borderRight: 0 }}
 					>
 						<SubMenu key="sub1" icon={<RocketOutlined />} title="Added satellites">
-							<Menu.Item key="1">
-								<span>SatName</span>
-								<Link to="/CATNR/1" />
-							</Menu.Item>
+							{satellites.map((satellite: ISatelliteData) => (
+								<Menu.Item key={satellite.OBJECT_ID}>
+									<span>{satellite.OBJECT_NAME}</span>
+									<Link to={`/CATNR/${satellite.NORAD_CAT_ID}`} />
+								</Menu.Item>
+							))}
 						</SubMenu>
 					</Menu>
 				</Sider>

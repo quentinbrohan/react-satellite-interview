@@ -2,9 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.less';
-
 import AppLayout from './components/AppLayout';
-import SatelliteInfo from './components/SatelliteInfo/SatelliteInfo';
+import SatelliteInfo from './features/SatelliteInfo/SatelliteInfo';
 import SearchBar from './components/SearchBar/SearchBar';
 
 function App(): JSX.Element {

@@ -1,12 +1,12 @@
 import { Typography } from 'antd';
 import React from 'react';
 
-import { ITableData } from '../../interfaces';
+import { ISatelliteData } from '../../interfaces';
 import './tableData.less';
 
 const { Title } = Typography;
 
-const TableData: React.FC<ITableData> = ({
+const TableData: React.FC<ISatelliteData> = ({
 	// OBJECT_NAME,
 	OBJECT_ID,
 	EPOCH,
@@ -24,7 +24,7 @@ const TableData: React.FC<ITableData> = ({
 	BSTAR,
 	MEAN_MOTION_DOT,
 	MEAN_MOTION_DDOT,
-}: ITableData) => {
+}: ISatelliteData) => {
 	return (
 		<div className="info-container">
 			<Title level={4}>Data</Title>
