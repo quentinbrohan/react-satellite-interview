@@ -36,8 +36,8 @@ const SatelliteInfo: React.FC<ISatelliteInfo> = () => {
 
 	if (!satellite) {
 		return (
-			<div>
-				<Title level={4}>Oups, Nothing here !</Title>
+			<div className="not-found-satellite">
+				<Title>Oops, there is nothing here !</Title>
 				<p>You first need to add a satellite to the list.</p>
 				<Link to="/">
 					<Button>Home</Button>
@@ -45,7 +45,11 @@ const SatelliteInfo: React.FC<ISatelliteInfo> = () => {
 			</div>
 		);
 	}
-	return <Spin indicator={antIcon} />;
+	return (
+		<div className="loading-satellite">
+			<Spin indicator={antIcon} />
+		</div>
+	);
 };
 
 export default SatelliteInfo;

@@ -5,6 +5,7 @@ import './App.less';
 import AppLayout from './components/AppLayout';
 import SatelliteInfo from './features/SatelliteInfo/SatelliteInfo';
 import SearchBar from './components/SearchBar/SearchBar';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 function App(): JSX.Element {
 	return (
@@ -14,6 +15,7 @@ function App(): JSX.Element {
 					<Switch>
 						<Route exact path="/" component={SearchBar} />
 						<Route exact path="/CATNR/:id" component={SatelliteInfo} />
+						<Route component={NotFoundPage} />
 					</Switch>
 				</AppLayout>
 			</div>
