@@ -36,5 +36,6 @@ module.exports = {
 		quotes: ['error', 'single'],
 		semi: ['error', 'always'],
 		'react/no-unescaped-entities': 'off',
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
 	},
 };

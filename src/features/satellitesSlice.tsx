@@ -46,7 +46,7 @@ export default satellitesSlice.reducer;
 
 // Actions
 
-const {
+export const {
 	changeSearchValue,
 	saveSearchError,
 	clearSearchError,
@@ -99,12 +99,12 @@ export const getSatelliteByNo = () => (dispatch: AppDispatch, getState: () => Ro
 		});
 };
 
-export const loadSatellite = (id: string) => (dispatch: AppDispatch, getState: () => RootState) => {
+export const loadSatellite = (id: number) => (dispatch: AppDispatch, getState: () => RootState) => {
 	const { satellites } = getState().satellites;
 
 	// Check if satellite ID in state
 	satellites.filter((el: ISatelliteData) => {
-		const isFound = el.NORAD_CAT_ID === parseInt(id);
+		const isFound = el.NORAD_CAT_ID === id;
 		if (isFound) {
 			dispatch(saveSatellite(el));
 		}

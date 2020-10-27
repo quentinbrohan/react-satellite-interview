@@ -20,6 +20,10 @@ export const SearchBar: React.FC = () => {
 		dispatch(handleChangeSearch(value));
 	};
 
+	const handleSatelliteSearch = () => {
+		dispatch(getSatelliteByNo());
+	};
+
 	return (
 		<div className="searchbar-container">
 			<Title>Track satellites currently orbitting arround Earth using Celestrak's API.</Title>
@@ -34,10 +38,15 @@ export const SearchBar: React.FC = () => {
 						min={10000}
 						max={46670}
 						value={search}
+						placeholder="NORAD"
 						onChange={onChange}
-						onPressEnter={() => dispatch(getSatelliteByNo())}
+						onPressEnter={() => handleSatelliteSearch()}
 					/>
-					<Button loading={loading} onClick={() => dispatch(getSatelliteByNo())}>
+					<Button
+						loading={loading}
+						disabled={search?.toString().length !== 5}
+						onClick={() => handleSatelliteSearch()}
+					>
 						Search
 					</Button>
 					{searchError && (

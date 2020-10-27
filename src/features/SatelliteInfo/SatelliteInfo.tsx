@@ -16,10 +16,10 @@ const { Title } = Typography;
 const SatelliteInfo: React.FC<ISatelliteInfo> = () => {
 	const { id } = useParams<IRouteParams>();
 	const dispatch = useDispatch();
-	const { satellite } = useSelector((state: IState) => state.satellites);
+	const { satellite, loading } = useSelector((state: IState) => state.satellites);
 
 	useEffect(() => {
-		dispatch(loadSatellite(id));
+		dispatch(loadSatellite(parseInt(id)));
 	}, [dispatch, id, satellite]);
 
 	if (satellite) {
@@ -34,7 +34,7 @@ const SatelliteInfo: React.FC<ISatelliteInfo> = () => {
 		);
 	}
 
-	if (!satellite) {
+	if (!satellite && !loading) {
 		return (
 			<div className="not-found-satellite">
 				<Title>Oops, there is nothing here !</Title>
