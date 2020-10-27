@@ -1,11 +1,13 @@
-import { RocketOutlined } from '@ant-design/icons';
 import { Button, Layout, Menu } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { IAppLayout, ISatelliteData } from '../interfaces';
 import { RootState } from '../reducers';
+
+import Icon from '@ant-design/icons';
+import { ReactComponent as SatelliteSvg } from '../assets/svg/satellite.svg';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -39,7 +41,11 @@ export const AppLayout: React.FC<IAppLayout> = ({ children }: IAppLayout) => {
 						defaultOpenKeys={['sub1']}
 						style={{ height: '100%', borderRight: 0 }}
 					>
-						<SubMenu key="sub1" icon={<RocketOutlined />} title="Added satellites">
+						<SubMenu
+							key="sub1"
+							icon={<Icon component={SatelliteSvg} height="2rem" />}
+							title="Added satellites"
+						>
 							{satellites.map((satellite: ISatelliteData) => (
 								<Menu.Item key={satellite.OBJECT_ID}>
 									<span>{satellite.OBJECT_NAME}</span>
