@@ -16,6 +16,10 @@ const satellitesSlice = createSlice({
 	name: 'satellites',
 	initialState: initialState,
 	reducers: {
+		// Immutable state created by Immer
+		// https://redux-toolkit.js.org/tutorials/intermediate-tutorial#mutable-update-logic
+		// https://github.com/immerjs/immer
+
 		changeSearchValue: (state, action) => {
 			state.search = action.payload;
 		},
@@ -65,7 +69,7 @@ export const getSatelliteByNo = () => (dispatch: AppDispatch, getState: () => Ro
 	const { search, satellites } = getState().satellites;
 	dispatch(setLoading(true));
 
-	// Uses cors-anywhere's API to bypass CORS
+	// Uses cors-anywhere's API to bypass CORS issues
 	axios
 		.get(
 			`https://cors-anywhere.herokuapp.com/https://celestrak.com/NORAD/elements/gp.php?FORMAT=json&CATNR=${search}`,
@@ -103,9 +107,8 @@ export const loadSatellite = (id: number) => (dispatch: AppDispatch, getState: (
 	const { satellites } = getState().satellites;
 
 	// Check if satellite ID in state
-	satellites.filter((el: ISatelliteData) => {
-		const isFound = el.NORAD_CAT_ID === id;
-		if (isFound) {
+	satellites.find((el: ISatelliteData) => {
+		if (el.NORAD_CAT_ID === id) {
 			dispatch(saveSatellite(el));
 		}
 	});

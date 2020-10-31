@@ -1,3 +1,5 @@
+import { Action } from '@reduxjs/toolkit';
+
 export interface IAppLayout {
 	children: React.ReactNode;
 }
@@ -47,5 +49,22 @@ export interface ISatellitesState {
 }
 
 export interface IState {
-	satellites: ISatellitesState | ISatellitesInitialState;
+	satellites: ISatellitesState;
+	notes: INotesState;
 }
+
+export interface INotesInitialState {
+	notes: [] | INote[];
+	content: string;
+}
+
+export interface INotesState {
+	notes: [] | INote[];
+	content: string;
+}
+export interface INote {
+	id: number;
+	content: string;
+}
+
+// TODO: Type Actions

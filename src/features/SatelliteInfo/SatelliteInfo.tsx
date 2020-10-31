@@ -4,10 +4,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
-import { IRouteParams, ISatelliteInfo, IState } from '../../interfaces';
+import { INote, IRouteParams, ISatelliteInfo, IState } from '../../interfaces';
 import { loadSatellite } from '../satellitesSlice';
 import './satelliteInfo.less';
 import TableData from './TableData';
+import { Note } from './Note';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -17,10 +18,12 @@ const SatelliteInfo: React.FC<ISatelliteInfo> = () => {
 	const { id } = useParams<IRouteParams>();
 	const dispatch = useDispatch();
 	const { satellite, loading } = useSelector((state: IState) => state.satellites);
+	const { notes, content } = useSelector((state: IState) => state.notes);
+	const note = notes.filter((note: INote) => note.id === parseInt(id));
 
 	useEffect(() => {
 		dispatch(loadSatellite(parseInt(id)));
-	}, [dispatch, id, satellite]);
+	}, [dispatch, id, satellite, note, content]);
 
 	if (satellite) {
 		return (
@@ -30,6 +33,11 @@ const SatelliteInfo: React.FC<ISatelliteInfo> = () => {
 				</Title>
 
 				<TableData {...satellite} />
+
+				<Note
+					content={note.length > 0 ? note[0].content : content}
+					id={satellite.NORAD_CAT_ID}
+				/>
 			</div>
 		);
 	}
