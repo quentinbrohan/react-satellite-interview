@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { ISatelliteData, ISatellitesInitialState } from '../interfaces';
-import { AppDispatch, RootState } from '..';
+import { ISatelliteData, ISatellitesInitialState } from '../../interfaces';
+import { AppDispatch, RootState } from '../..';
 
 const initialState: ISatellitesInitialState = {
 	satellites: [],
@@ -31,7 +31,7 @@ const satellitesSlice = createSlice({
 		clearSearchError: (state) => {
 			state.searchError = initialState.searchError;
 		},
-		saveSatelliteToArray: (state, action) => {
+		saveSatelliteToArray: (state, action: PayloadAction<ISatelliteData>) => {
 			state.satellites = [...state.satellites, action.payload];
 			state.loading = false;
 			state.search = initialState.search;
@@ -40,7 +40,7 @@ const satellitesSlice = createSlice({
 			state.satellite = action.payload;
 			state.loading = false;
 		},
-		setLoading: (state, action) => {
+		setLoading: (state, action: PayloadAction<boolean>) => {
 			state.loading = action.payload;
 		},
 	},

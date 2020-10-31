@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.less';
 import AppLayout from './components/AppLayout';
-import SatelliteInfo from './features/SatelliteInfo/SatelliteInfo';
+import SatelliteInfo from './features/satellites/SatelliteInfo/SatelliteInfo';
 import SearchBar from './components/SearchBar/SearchBar';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 

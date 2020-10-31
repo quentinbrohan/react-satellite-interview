@@ -4,11 +4,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
-import { INote, IRouteParams, ISatelliteInfo, IState } from '../../interfaces';
+import { INote, IRouteParams, ISatelliteInfo, IState } from '../../../interfaces';
 import { loadSatellite } from '../satellitesSlice';
 import './satelliteInfo.less';
 import TableData from './TableData';
-import { Note } from './Note';
+import Note from '../../notes/Note/Note';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 

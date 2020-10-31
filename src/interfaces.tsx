@@ -1,7 +1,11 @@
-import { Action } from '@reduxjs/toolkit';
+// import { Action } from '@reduxjs/toolkit';
 
 export interface IAppLayout {
 	children: React.ReactNode;
+}
+
+export interface IRouteParams {
+	id: string;
 }
 
 export interface ISatelliteInfo {
@@ -26,10 +30,6 @@ export interface ISatelliteData {
 	BSTAR: number;
 	MEAN_MOTION_DOT: number;
 	MEAN_MOTION_DDOT: number;
-}
-
-export interface IRouteParams {
-	id: string;
 }
 
 export interface ISatellitesInitialState {
@@ -66,5 +66,3 @@ export interface INote {
 	id: number;
 	content: string;
 }
-
-// TODO: Type Actions

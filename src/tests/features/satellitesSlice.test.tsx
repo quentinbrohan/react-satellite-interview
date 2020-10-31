@@ -6,7 +6,7 @@ import satellites, {
 	setLoading,
 	saveSatelliteToArray,
 	saveSatellite,
-} from '../../features/satellitesSlice';
+} from '../../features/satellites/satellitesSlice';
 import mockSatellite from '../../data/mockSatellite.json';
 
 const initialState: ISatellitesInitialState = {

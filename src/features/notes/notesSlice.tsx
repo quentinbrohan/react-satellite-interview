@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { INotesInitialState, INote } from '../interfaces';
-import { AppDispatch, RootState } from '..';
+import { INotesInitialState, INote } from '../../interfaces';
+import { AppDispatch, RootState } from '../..';
 
 const initialState: INotesInitialState = {
 	notes: [],
@@ -12,10 +12,10 @@ const notesSlice = createSlice({
 	name: 'notes',
 	initialState: initialState,
 	reducers: {
-		changeNoteValue: (state, action) => {
+		changeNoteValue: (state, action: PayloadAction<string>) => {
 			state.content = action.payload;
 		},
-		saveNoteToArray: (state, action) => {
+		saveNoteToArray: (state, action: PayloadAction<INote>) => {
 			state.notes = [
 				...state.notes,
 				{
@@ -23,9 +23,8 @@ const notesSlice = createSlice({
 					content: action.payload.content,
 				},
 			];
-			console.log(state.notes);
 		},
-		editNote: (state, action) => {
+		editNote: (state, action: PayloadAction<INote>) => {
 			const id = state.notes.findIndex((note) => note.id === action.payload.id);
 			if (id !== -1) state.notes[id].content = action.payload.content;
 		},

@@ -4,14 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { INote } from '../../interfaces';
+import { INote } from '../../../interfaces';
 import { addNote } from '../notesSlice';
 import './note.less';
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
-export const Note: React.FC<INote> = ({ id, content }: INote) => {
+const Note: React.FC<INote> = ({ id, content }: INote) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [newContent, setNewContent] = useState<string>('');
@@ -81,3 +81,5 @@ export const Note: React.FC<INote> = ({ id, content }: INote) => {
 		</div>
 	);
 };
+
+export default Note;

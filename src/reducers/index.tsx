@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import satellitesReducer from '../features/satellitesSlice';
-import notesReducer from '../features/notesSlice';
+import satellitesReducer from '../features/satellites/satellitesSlice';
+import notesReducer from '../features/notes/notesSlice';
 
 export const rootReducer = combineReducers({
 	satellites: satellitesReducer,

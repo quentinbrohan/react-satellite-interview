@@ -7,7 +7,7 @@ import {
 	handleChangeSearch,
 	getSatelliteByNo,
 	resetSearchError,
-} from '../../features/satellitesSlice';
+} from '../../features/satellites/satellitesSlice';
 import { IState } from '../../interfaces';
 
 const { Title } = Typography;

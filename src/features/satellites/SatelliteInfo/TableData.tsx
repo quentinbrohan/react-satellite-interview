@@ -1,7 +1,7 @@
 import { Typography } from 'antd';
 import React from 'react';
 
-import { ISatelliteData } from '../../interfaces';
+import { ISatelliteData } from '../../../interfaces';
 import './tableData.less';
 
 const { Title } = Typography;
