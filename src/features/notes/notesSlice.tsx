@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { INotesInitialState, INote } from '../../interfaces';
+import { INotesState, INote } from '../../interfaces';
 import { AppDispatch, RootState } from '../..';
 
-const initialState: INotesInitialState = {
+const initialState: INotesState = {
 	notes: [],
 	content: '',
 };

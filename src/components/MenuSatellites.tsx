@@ -11,7 +11,7 @@ import { RootState } from '../reducers';
 const { SubMenu } = Menu;
 
 const MenuSatellites: React.FC = () => {
-	const { satellites } = useSelector((state: RootState | any) => state.satellites);
+	const { satellites } = useSelector((state: RootState) => state.satellites);
 
 	return (
 		<Menu
@@ -25,7 +25,7 @@ const MenuSatellites: React.FC = () => {
 				icon={<Icon component={SatelliteSvg} height="2rem" />}
 				title="Added satellites"
 			>
-				{satellites.map((satellite: ISatelliteData) => (
+				{(satellites as Array<ISatelliteData>).map((satellite: ISatelliteData) => (
 					<Menu.Item key={satellite.OBJECT_ID}>
 						<span>{satellite.OBJECT_NAME}</span>
 						<Link to={`/CATNR/${satellite.NORAD_CAT_ID}`} />

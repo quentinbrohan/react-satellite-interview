@@ -32,30 +32,17 @@ export interface ISatelliteData {
 	MEAN_MOTION_DDOT: number;
 }
 
-export interface ISatellitesInitialState {
-	satellites: [] | ISatelliteData[];
-	satellite: null;
-	loading: boolean;
-	search: undefined;
-	searchError: null;
-}
-
 export interface ISatellitesState {
-	satellites: ISatelliteData[];
-	satellite: ISatelliteData;
+	satellites: [] | ISatelliteData[];
+	satellite: null | ISatelliteData;
 	loading: boolean;
-	search: number | undefined;
-	searchError: string;
+	search: undefined | number;
+	searchError: null | string;
 }
 
 export interface IState {
 	satellites: ISatellitesState;
 	notes: INotesState;
-}
-
-export interface INotesInitialState {
-	notes: [] | INote[];
-	content: string;
 }
 
 export interface INotesState {

@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { ISatelliteData, ISatellitesInitialState } from '../../interfaces';
+import { ISatelliteData, ISatellitesState } from '../../interfaces';
 import { AppDispatch, RootState } from '../..';
 
-const initialState: ISatellitesInitialState = {
+const initialState: ISatellitesState = {
 	satellites: [],
 	satellite: null,
 	loading: false,

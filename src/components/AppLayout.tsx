@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { IAppLayout } from '../interfaces';
-import { RootState } from '../reducers';
 import MenuSatellites from './MenuSatellites';
 
 const { Header, Content, Sider } = Layout;
