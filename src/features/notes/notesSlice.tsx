@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { INotesState, INote } from '../../interfaces';
+import { INotesState, INote, ISatelliteData } from '../../interfaces';
 import { AppDispatch, RootState } from '../..';
 
 const initialState: INotesState = {
@@ -42,7 +42,7 @@ export const handleChangeContent = (value: string) => (dispatch: AppDispatch) =>
 
 export const addNote = (value: string) => (dispatch: AppDispatch, getState: () => RootState) => {
 	const { notes } = getState().notes;
-	const { satellite }: any = getState().satellites;
+	const { satellite }: ISatelliteData | any = getState().satellites;
 
 	// Check if satellite ID in state
 	if (notes.length > 0) {
