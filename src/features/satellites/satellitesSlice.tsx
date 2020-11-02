@@ -23,7 +23,7 @@ const satellitesSlice = createSlice({
 		changeSearchValue: (state, action) => {
 			state.search = action.payload;
 		},
-		saveSearchError: (state, action) => {
+		saveSearchError: (state, action: PayloadAction<string>) => {
 			state.searchError = action.payload;
 			state.loading = false;
 			state.search = initialState.search;

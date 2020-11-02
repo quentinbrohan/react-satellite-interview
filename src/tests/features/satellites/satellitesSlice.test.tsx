@@ -1,16 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { PayloadAction } from '@reduxjs/toolkit';
-import { ISatellitesInitialState } from '../../interfaces';
+import { ISatellitesState } from '../../../interfaces';
 import satellites, {
 	changeSearchValue,
 	setLoading,
 	saveSatelliteToArray,
 	saveSatellite,
-} from '../../features/satellites/satellitesSlice';
-import mockSatellite from '../../data/mockSatellite.json';
+} from '../../../features/satellites/satellitesSlice';
+import mockSatellite from '../../../data/mockSatellite.json';
 
-const initialState: ISatellitesInitialState = {
+export const initialState: ISatellitesState = {
 	satellites: [],
+	satellite: null,
+	loading: false,
+	search: undefined,
+	searchError: null,
+};
+
+const state: ISatellitesState = {
+	satellites: [mockSatellite],
 	satellite: null,
 	loading: false,
 	search: undefined,
@@ -25,8 +32,7 @@ describe('createSlice', () => {
 				// @ts-ignore
 				createSlice({
 					reducers: {
-						changeSearchValue: (state, action: PayloadAction) =>
-							(state.search = action.payload),
+						changeSearchValue: (state, action) => (state.search = action.payload),
 					},
 					initialState,
 				});
@@ -84,6 +90,21 @@ describe('satellites reducer', () => {
 			searchError: null,
 		});
 	});
+
+	// it('should dispatch saveSearchError if saveSatelliteToArray ID already in state', () => {
+	// 	expect(
+	// 		satellites(state, {
+	// 			type: saveSatelliteToArray.type,
+	// 			payload: mockSatellite,
+	// 		}),
+	// 	).toEqual({
+	// 		satellites: [mockSatellite],
+	// 		satellite: null,
+	// 		loading: false,
+	// 		search: undefined,
+	// 		searchError: `NORAD ${mockSatellite.NORAD_CAT_ID} already added !`,
+	// 	});
+	// });
 
 	it('should handle saveSatellite', () => {
 		expect(

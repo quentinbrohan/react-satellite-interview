@@ -1,7 +1,18 @@
 .note-container {
     margin-top: 2rem;
-    max-width: 760px;
     text-align: left;
+
+    @media (min-width: 1080px) {
+        max-width: 1080px;
+    }
+
+    @media (max-width: 959px) {
+        max-width: 100%;
+    }
+
+    p {
+        line-break: anywhere;
+    }
 
     h4 {
         text-align: left;

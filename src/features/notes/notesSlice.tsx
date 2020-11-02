@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { INotesState, INote, ISatelliteData } from '../../interfaces';
+import { INotesState, INote } from '../../interfaces';
 import { AppDispatch, RootState } from '../..';
 
 const initialState: INotesState = {
@@ -10,7 +10,7 @@ const initialState: INotesState = {
 
 const notesSlice = createSlice({
 	name: 'notes',
-	initialState: initialState,
+	initialState,
 	reducers: {
 		changeNoteValue: (state, action: PayloadAction<string>) => {
 			state.content = action.payload;
@@ -42,21 +42,21 @@ export const handleChangeContent = (value: string) => (dispatch: AppDispatch) =>
 
 export const addNote = (value: string) => (dispatch: AppDispatch, getState: () => RootState) => {
 	const { notes } = getState().notes;
-	const { satellite }: ISatelliteData | any = getState().satellites;
+	const { satellite } = getState().satellites;
 
 	// Check if satellite ID in state
 	if (notes.length > 0) {
-		if (notes.find((el: INote) => el.id === satellite.NORAD_CAT_ID)) {
+		if (notes.find((el: INote) => el.id === satellite!.NORAD_CAT_ID)) {
 			dispatch(
 				editNote({
-					id: satellite.NORAD_CAT_ID,
+					id: satellite!.NORAD_CAT_ID,
 					content: value,
 				}),
 			);
 		} else {
 			dispatch(
 				saveNoteToArray({
-					id: satellite.NORAD_CAT_ID,
+					id: satellite!.NORAD_CAT_ID,
 					content: value,
 				}),
 			);
@@ -64,7 +64,7 @@ export const addNote = (value: string) => (dispatch: AppDispatch, getState: () =
 	} else {
 		dispatch(
 			saveNoteToArray({
-				id: satellite.NORAD_CAT_ID,
+				id: satellite!.NORAD_CAT_ID,
 				content: value,
 			}),
 		);

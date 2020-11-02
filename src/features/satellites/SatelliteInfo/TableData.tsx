@@ -32,7 +32,7 @@ const TableData: React.FC<ISatelliteData> = ({
 	};
 	return (
 		<div className="info-container">
-			<Title level={4}>Data</Title>
+			{/* <Title level={4}>Data</Title> */}
 			<Switch
 				checkedChildren={<BorderlessTableOutlined />}
 				unCheckedChildren={<UnorderedListOutlined />}
