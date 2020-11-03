@@ -60,7 +60,7 @@ export const SearchBar: React.FC = () => {
 				</div>
 				<div className="search-info">
 					Latest satellites in orbit: <b>~46670</b>. Satellites de-orbited:{' '}
-					<b>{'<='}10 000</b>.
+					<b>{'<'}10 000</b>.
 				</div>
 			</Input.Group>
 		</div>
