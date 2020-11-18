@@ -2,11 +2,14 @@
 
 A satellite application in which it can display technical information from Celestrak for Earth-orbiting satellites.
 
-Integrated Typescript and used Redux for the global state management.
+Integrated Typescript, used Redux for the global state management and Axios for consuming REST API.
 
 UI: Ant Design.
 
+![](react-satellite-interview.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
