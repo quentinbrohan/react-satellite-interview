@@ -99,3 +99,8 @@ export const SearchBar: React.FC = () => {
 					</Button>
 				))}
 			</Space>
+		</div>
+	);
+};
+
+export default SearchBar;
