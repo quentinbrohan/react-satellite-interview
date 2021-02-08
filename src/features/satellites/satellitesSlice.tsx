@@ -65,14 +65,24 @@ export const handleChangeSearch = (value: string | number | undefined) => (
 	dispatch(changeSearchValue(value));
 };
 
-export const getSatelliteByNo = () => (dispatch: AppDispatch, getState: () => RootState) => {
+export const getSatelliteByNo = (norad?: string) => (
+	dispatch: AppDispatch,
+	getState: () => RootState,
+) => {
 	const { search, satellites } = getState().satellites;
 	dispatch(setLoading(true));
 
 	// Uses cors-anywhere's API to bypass CORS issues
-	axios
+	// https://cors-anywhere.herokuapp.com/
+	// Alternative
+	//thingproxy.freeboard.io/fetch/
+	// https://celestrak.com/NORAD/elements/gp.php?FORMAT=json&CATNR=41266
+	https: axios
 		.get(
-			`https://cors-anywhere.herokuapp.com/https://celestrak.com/NORAD/elements/gp.php?FORMAT=json&CATNR=${search}`,
+			// `https://cors-anywhere.herokuapp.com/https://celestrak.com/NORAD/elements/gp.php?FORMAT=json&CATNR=${norad ? norad : search}`,
+			`https://thingproxy.freeboard.io/fetch/https://celestrak.com/NORAD/elements/gp.php?FORMAT=json&CATNR=${
+				norad ? norad : search
+			}`,
 		)
 		.then((response) => {
 			if (response.data === 'No GP data found') {

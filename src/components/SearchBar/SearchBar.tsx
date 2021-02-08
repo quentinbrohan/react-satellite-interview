@@ -1,32 +1,56 @@
+import { Alert, Button, Input, InputNumber, Space, Typography } from 'antd';
 import React from 'react';
-import { Input, InputNumber, Button, Typography, Alert } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-
-import './searchBar.less';
 import {
-	handleChangeSearch,
 	getSatelliteByNo,
+	handleChangeSearch,
 	resetSearchError,
 } from '../../features/satellites/satellitesSlice';
 import { IState } from '../../interfaces';
+import './searchBar.less';
 
 const { Title } = Typography;
+
+const DEFAULT_SATELLITES = [
+	{
+		name: 'ATLAS CENTAUR 2',
+		NORAD: '00694',
+	},
+	{
+		name: 'ISS (ZARYA)',
+		NORAD: '25544',
+	},
+	{
+		name: 'SOYUZ-MS 17',
+		NORAD: '46613',
+	},
+	{
+		name: 'CREW DRAGON 1',
+		NORAD: '46920',
+	},
+];
 
 export const SearchBar: React.FC = () => {
 	const dispatch = useDispatch();
 	const { search, loading, searchError } = useSelector((state: IState) => state.satellites);
 
-	const onChange = (value: string | number | undefined) => {
+	const onChange = (value: string | number | undefined | any) => {
 		dispatch(handleChangeSearch(value));
 	};
 
-	const handleSatelliteSearch = () => {
-		dispatch(getSatelliteByNo());
+	const handleSatelliteSearch = (norad?: string) => {
+		dispatch(getSatelliteByNo(norad));
 	};
 
 	return (
 		<div className="searchbar-container">
-			<Title>Track satellites currently orbitting arround Earth using Celestrak's API.</Title>
+			<Title>
+				Track satellites currently orbitting arround Earth using{' '}
+				<a href="https://celestrak.com/NORAD/elements/" target="blank">
+					Celestrak
+				</a>
+				's API.
+			</Title>
 			<Input.Group style={{ margin: '0 auto 2rem' }}>
 				<p>
 					Enter Satellite Catalog Number (NORAD) [5 digit number] to add its informations
@@ -63,6 +87,18 @@ export const SearchBar: React.FC = () => {
 					<b>{'<'}10 000</b>.
 				</div>
 			</Input.Group>
+			<Title level={3}>Examples</Title>
+			<Space>
+				{DEFAULT_SATELLITES.map((satellite) => (
+					<Button
+						type="default"
+						key={satellite.name}
+						onClick={() => handleSatelliteSearch(satellite.NORAD)}
+					>
+						{satellite.name}
+					</Button>
+				))}
+			</Space>
 		</div>
 	);
 };
